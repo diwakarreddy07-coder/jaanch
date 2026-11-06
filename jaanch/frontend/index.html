@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#123b5d">
+<title>Jaanch: scam check for campus</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap">
+<style>
+:root{--bg:#f2f5f2;--sf:#fff;--tx:#10231f;--mu:#5b6d68;--bd:#dce4df;--pri:#0f4c46;--pri2:#0a3330;--on:#fff;--ac:#e8a33d;--lo:#16703f;--me:#97580a;--hi:#b3261e;--lob:#e0f2e7;--meb:#fdeccc;--hib:#fbe0dd;--inp:#fff;--sh:0 1px 2px rgba(16,35,31,.06),0 8px 24px rgba(16,35,31,.06);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1513;--sf:#13221f;--tx:#e6f0ec;--mu:#97aba5;--bd:#24372f;--pri:#6fd1c3;--pri2:#0a3330;--on:#06201d;--lo:#6fd19b;--me:#f0b45a;--hi:#ff9a92;--lob:#123a27;--meb:#3b2b0f;--hib:#431b1b;--inp:#0e1a17;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b1513;--sf:#13221f;--tx:#e6f0ec;--mu:#97aba5;--bd:#24372f;--pri:#6fd1c3;--pri2:#0a3330;--on:#06201d;--lo:#6fd19b;--me:#f0b45a;--hi:#ff9a92;--lob:#123a27;--meb:#3b2b0f;--hib:#431b1b;--inp:#0e1a17;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;padding-bottom:84px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--sf);z-index:11}
+header{position:sticky;top:env(safe-area-inset-top,0px);height:60px;display:flex;align-items:center;gap:10px;background:var(--sf);border-bottom:1px solid var(--bd);padding:0 16px;z-index:10}
+.logo{width:34px;height:34px;border-radius:10px;background:var(--pri);color:var(--on);display:grid;place-items:center}
+header b{font-size:1.1rem;letter-spacing:-.01em}header small{color:var(--mu);display:block;line-height:1;font-size:.72rem}header .sp{flex:1}
+#th{min-height:40px;width:40px;padding:0;background:transparent;color:var(--tx);border-color:var(--bd)}
+main{max-width:940px;margin:0 auto;padding:16px}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:16px;padding:18px;margin-bottom:14px;box-shadow:var(--sh)}
+h2{font-size:1.1rem;margin:0 0 8px;letter-spacing:-.01em}h3{font-size:.98rem;margin:12px 0 4px}
+label{display:block;font-size:.82rem;font-weight:600;color:var(--mu);margin:10px 0 3px}
+input,textarea,select{width:100%;font:inherit;color:var(--tx);background:var(--inp);border:1px solid var(--bd);border-radius:10px;padding:10px 12px}
+textarea{min-height:130px;resize:vertical}input:focus,textarea:focus{border-color:var(--pri)}
+button{font:inherit;font-weight:600;border-radius:10px;border:1px solid var(--pri);background:var(--pri);color:var(--on);padding:10px 16px;cursor:pointer;min-height:44px}
+button.alt{background:transparent;color:var(--pri)}button.sm{min-height:36px;padding:5px 12px;font-size:.85rem}
+:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.row>*{flex:1 1 auto}
+.hero{background:linear-gradient(135deg,var(--pri2),#14645b);color:#fff;border-radius:20px;padding:30px 22px;margin-bottom:14px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(232,163,61,.55),transparent 70%)}
+.hero h1{margin:0 0 8px;font-size:clamp(1.7rem,5vw,2.4rem);line-height:1.12;letter-spacing:-.03em;position:relative}.hero p{margin:0;max-width:520px;opacity:.9;position:relative}
+.hero .row{position:relative}.hero button{background:var(--ac);border-color:var(--ac);color:#261600}.hero button.alt{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.stats,.steps{display:grid;gap:10px;margin-bottom:14px}.stats{grid-template-columns:repeat(3,1fr)}.steps{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.stat,.step{background:var(--sf);border:1px solid var(--bd);border-radius:14px;padding:14px;box-shadow:var(--sh)}
+.stat b{display:block;font-size:1.7rem;letter-spacing:-.02em}.stat span,.step p{color:var(--mu);font-size:.85rem;margin:0}.step i{font-style:normal;display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--ac);color:#261600;font-weight:700;margin-bottom:6px}
+.rec{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--bd)}.rec:last-child{border:0}
+.chip{display:inline-block;border-radius:999px;padding:3px 12px;font-weight:700;font-size:.88rem;white-space:nowrap}
+.Low{background:var(--lob);color:var(--lo)}.Medium{background:var(--meb);color:var(--me)}.High{background:var(--hib);color:var(--hi)}
+.ev{border-left:4px solid var(--bd);padding:8px 12px;margin:8px 0;background:var(--bg);border-radius:0 10px 10px 0}.ev.pos{border-color:var(--hi)}.ev.neg{border-color:var(--lo)}
+.src{font-size:.76rem;color:var(--mu)}.mu{color:var(--mu);font-size:.88rem}.pill{font-size:.72rem;border:1px solid var(--bd);border-radius:6px;padding:1px 7px;color:var(--mu)}
+table{width:100%;border-collapse:collapse;font-size:.88rem}td,th{border-bottom:1px solid var(--bd);padding:8px 6px;text-align:left;vertical-align:top}
+.bar{height:8px;background:var(--bd);border-radius:5px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac)}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--sf);border-top:1px solid var(--bd);padding-bottom:env(safe-area-inset-bottom,0px);z-index:10}
+nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.72rem;border:0;background:none;color:var(--mu);border-radius:0;min-height:58px}
+nav button[aria-current="true"]{color:var(--pri);box-shadow:inset 0 3px 0 var(--pri)}
+.hide{display:none}
+@media(min-width:900px){body{padding-bottom:20px}main{margin-left:236px;max-width:none;padding:24px 32px}main>section{max-width:860px}
+nav{top:60px;right:auto;width:220px;bottom:0;flex-direction:column;border-top:0;border-right:1px solid var(--bd);padding:14px 10px;gap:4px}
+nav button{flex:0 0 auto;flex-direction:row;gap:10px;font-size:.95rem;min-height:44px;padding:0 12px;border-radius:10px;justify-content:flex-start}
+nav button[aria-current="true"]{box-shadow:none;background:var(--bg)}}
+@media(max-width:520px){.stats{grid-template-columns:1fr 1fr 1fr}.stat{padding:10px}.stat b{font-size:1.3rem}}
+@media print{nav,header,form,.noprint{display:none!important}main{margin:0}body{background:#fff;color:#000}}
+</style></head><body>
+<header><div class="logo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><div><b>Jaanch</b><small>Scam check for campus</small></div><span class="sp"></span><button id="th" class="alt" aria-label="Switch light or dark theme"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></button></header>
+<main>
+<section id="t-home">
+ <div class="hero"><h1>Check before you pay.</h1><p>Jaanch helps students and staff verify suspicious messages, links and payment requests against a trusted college registry, and shows the evidence behind every result.</p>
+  <div class="row"><button data-go="check">Check a message</button><button class="alt" data-go="reg">Set up registry</button></div></div>
+ <div class="stats" id="st"></div>
+ <div class="steps"><div class="step"><i>1</i><h3>Paste what you got</h3><p>A forwarded message, link, UPI ID or profile details. No logins needed.</p></div>
+  <div class="step"><i>2</i><h3>We compare it</h3><p>Rules and the college registry look for payment, urgency, OTP and lookalike signals.</p></div>
+  <div class="step"><i>3</i><h3>Read the evidence</h3><p>See what matched, how confident the check is, and what to do next.</p></div></div>
+ <div class="card"><h2>Recent checks</h2><div id="rc"></div></div>
+ <p class="mu">Private by design: everything stays in this browser. Jaanch shows risk indicators, never proof that something is fake.</p>
+</section>
+<section id="t-check" class="hide">
+ <div class="card"><h2>What did you receive?</h2>
+  <form id="f" onsubmit="return false">
+   <label for="msg">Message text</label><textarea id="msg" placeholder="Paste the forwarded message here"></textarea>
+   <label for="shot">Or upload a screenshot</label><input id="shot" type="file" accept="image/png,image/jpeg,image/webp"><p class="mu" id="ocrn"></p>
+   <label for="lnk">Link (optional)</label><input id="lnk" inputmode="url" autocomplete="off">
+   <label for="upi">UPI ID shown (optional)</label><input id="upi" autocomplete="off" placeholder="name@bank">
+   <details style="margin-top:10px"><summary>Suspicious profile details (optional)</summary>
+    <label for="hnd">Handle</label><input id="hnd" autocomplete="off">
+    <label for="dn">Display name</label><input id="dn" autocomplete="off">
+    <label for="web">Website shown on profile</label><input id="web" inputmode="url" autocomplete="off">
+   </details>
+   <div class="row"><button id="go">Check this</button><button class="alt" id="clr" type="button">Clear</button></div>
+   <p class="mu">Try a synthetic example:</p>
+   <div class="row"><button class="alt sm" data-s="0" type="button">Genuine fee notice</button><button class="alt sm" data-s="1" type="button">Forwarded training scam</button><button class="alt sm" data-s="2" type="button">Lookalike profile</button></div>
+  </form></div>
+ <div id="res" aria-live="polite"></div>
+</section>
+<section id="t-reg" class="hide">
+ <div class="card"><h2>Trusted registry</h2><p class="mu">Organisation-supplied details. Not platform-verified.</p>
+  <label for="on">Organisation name</label><input id="on">
+  <label for="od">Official domains (comma separated)</label><input id="od">
+  <label for="oh">Official handles</label><input id="oh">
+  <label for="oc">Public contacts</label><input id="oc">
+  <div class="row"><button id="sv">Save registry</button></div>
+  <p class="mu" id="cm"></p><div class="bar"><i id="cb"></i></div></div>
+ <div class="card hide" id="sec"><h2>Admin access</h2><p class="mu" id="sm">Sign in to edit the registry and approve payees.</p><label for="ap">Admin password</label><input id="ap" type="password" autocomplete="current-password"><div class="row"><button class="alt" id="al">Sign in</button></div></div>
+ <div class="card"><h2>Verified payees</h2>
+  <p class="mu">A payee counts only after approval. In this demo one person approves; the full design needs a second approver and email OTP (planned).</p>
+  <div id="pl"></div>
+  <div id="ot" class="hide"><label for="fe">College email</label><input id="fe" inputmode="email" autocomplete="email"><div class="row"><button class="alt sm" id="so" type="button">Send code</button></div><label for="fc">6-digit code</label><input id="fc" inputmode="numeric" maxlength="6"><div class="row"><button class="alt sm" id="vo" type="button">Verify email</button></div><p class="mu" id="om"></p></div>
+  <label for="pn">Faculty name</label><input id="pn"><label for="pu">UPI ID</label><input id="pu"><label for="pp">Purpose</label><input id="pp">
+  <div class="row"><button class="alt" id="pa">Submit payee</button></div></div>
+</section>
+<section id="t-ev" class="hide">
+ <div class="card"><h2>Evaluation on the built-in test set</h2>
+  <p class="mu">Ten short, team-written items. This shows the rules behave sensibly; it does not prove accuracy on real scams.</p>
+  <button id="ev">Run evaluation</button><div id="evr"></div></div>
+</section>
+<section id="t-ab" class="hide">
+ <div class="card"><h2>What this tool can’t tell you</h2>
+  <p>It uses only what you enter. It cannot see inside Instagram, Facebook or WhatsApp, cannot prove an account is fake or official, and scores are starting heuristics, not probabilities. A Low result means no red flags were found, not that something is safe.</p>
+  <p>Never share an OTP or password. Unknown links are never opened by this tool. Everything stays in this browser.</p></div>
+ <div class="card"><h2>Built and planned</h2>
+  <p><span class="pill">Built</span> Registry, verified payees, message and link rules (English and Hinglish), profile comparison, confidence level, evidence report, repeat-identifier links, evaluation, print.</p>
+  <p><span class="pill">Planned</span> Screenshot OCR, server and database, email OTP and second-approver login, action pack, reputation checks.</p></div>
+</section>
+</main>
+<nav aria-label="Main"><button data-t="home" aria-current="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8v10H3z"/></svg><span>Home</span></button><button data-t="check"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg><span>Check</span></button><button data-t="reg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span>Registry</span></button><button data-t="ev"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span>Evaluate</span></button><button data-t="ab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg><span>About</span></button></nav>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let S={org:{name:"Sunrise Institute of Technology (synthetic)",domains:["sunrise.edu.in"],handles:["sunrise_placements"],contacts:["placements@sunrise.edu.in"]},payees:[{name:"Prof. A. Rao",upi:"rao.sunrise@upi",purpose:"Python workshop fee",st:"approved"}],cases:[]};
+try{const x=localStorage.getItem("ts4");if(x)S=JSON.parse(x)}catch(e){}
+const save=()=>{try{localStorage.setItem("ts4",JSON.stringify(S))}catch(e){}};
+let SRV=false,TOK="",FTOK="";
+const api=async(m,u,b,f,t)=>{const hd={};if(t||TOK)hd["X-Token"]=t||TOK;let body;if(f)body=f;else if(b){hd["Content-Type"]="application/json";body=JSON.stringify(b)}const r=await fetch("/api/v1/"+u,{method:m,headers:hd,body}),j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(typeof j.detail==="string"?j.detail:"Request failed ("+r.status+")");return j};
+const load=async()=>{const j=await api("GET","registry");S.org=j.org;S.payees=j.payees};
+const adapt=j=>({out:j.outcome,conf:j.confidence,insuf:j.insufficient,cats:new Set(j.categories),gr:Object.fromEntries(Object.entries(j.groups).map(([g,x])=>[g,{sc:x.score,b:x.band,it:x.evidence}]))});
+const n=s=>String(s||"").toLowerCase().replace(/[^a-z0-9]/g,"").replace(/rn/g,"m").replace(/0/g,"o").replace(/1/g,"l");
+const lev=(a,b)=>{const m=[...Array(a.length+1)].map((_,i)=>[i]);for(let j=1;j<=b.length;j++)m[0][j]=j;for(let i=1;i<=a.length;i++)for(let j=1;j<=b.length;j++)m[i][j]=Math.min(m[i-1][j]+1,m[i][j-1]+1,m[i-1][j-1]+(a[i-1]==b[j-1]?0:1));return m[a.length][b.length]};
+const sim=(a,b)=>{a=n(a);b=n(b);return a||b?1-lev(a,b)/Math.max(a.length,b.length):0};
+const R=[["otp",40,/\b(otp|pin|password|login code|cvv)\b/i,"OTP or password request","Asks for a secret code. Never share these."],
+["payment",25,/(registration fee|processing fee|refundable deposit|deposit|pay now|pay (?:rs\.?|₹)\s?\d+|\bfees?\b|send money|paisa bhejo|paise bhejo)/i,"Payment request","Colleges do charge fees, so verify the payee independently."],
+["urgency",10,/(only \d+ seats|seats left|today only|register today|last chance|hurry|immediately|urgent|jaldi)/i,"Urgency","Pressure to act fast. Urgency alone is not proof."],
+["jobclaim",10,/(internship guaranteed|guaranteed (?:job|placement|internship)|100% placement|you are selected|selected for)/i,"Guaranteed or surprise selection","Verify with the placement office."],
+["chain",10,/(forward to all|share (?:with|to) (?:everyone|all)|forward this)/i,"Chain-forward request","Common in scam forwards, not proof."]];
+const SHORT=["bit.ly","tinyurl.com","t.co","goo.gl","cutt.ly","rb.gy","is.gd"];
+const band=s=>s>=60?"High":s>=25?"Medium":"Low",ICON={Low:"✔ ",Medium:"⚠ ",High:"✖ "},host=u=>u.replace(/^https?:\/\//i,"").split(/[/?#]/)[0].toLowerCase();
+const regDom=h=>S.org.domains.find(d=>h===d||h.endsWith("."+d));
+function run(i,keep){
+ const ev=[],add=(g,c,p,t,d,s)=>ev.push({g,c,p,t,d,s}),text=i.text||"";
+ R.forEach(([c,p,re,t,w])=>{const m=re.exec(text);if(m)add("m",c,p,t,"Matched “"+m[0]+"”. "+w,"message text")});
+ const upiRe=/[\w.-]{2,}@[a-z]{2,}\b(?!\.[a-z])/i,upi=(i.upi||(text.match(upiRe)||[])[0]||"").trim();
+ const clean=(text+" "+(i.link||"")).replace(/[\w.-]+@[\w.-]+/g,"");
+ const hosts=[...new Set((clean.match(/(?:https?:\/\/)?(?:[a-z0-9-]+\.)+[a-z]{2,}(?:\/\S*)?/gi)||[]).map(host))];
+ hosts.forEach(h=>{if(SHORT.includes(h))add("m","short",10,"Shortened link","“"+h+"” hides the real destination. Not opened.","message text");
+  else if(regDom(h))add("m","ok",0,"Domain matches registry","“"+h+"” is a registered domain.","registry");
+  else if(S.org.domains.some(d=>sim(h,d)>=.8))add("m","lookalike",30,"Lookalike domain","“"+h+"” resembles a registered domain but is not one.","registry comparison");
+  else add("m","link",5,"Other link","“"+h+"” is not in the registry. Not opened.","message text")});
+ if(upi){const p=S.payees.find(x=>x.upi.toLowerCase()===upi.toLowerCase());
+  if(p&&p.st==="approved")add("m","verified",-30,"Verified payee",upi+" is registered to "+p.name+" for: "+p.purpose+".","registry");
+  else if(p)add("m","pending",10,"Payee awaiting approval",upi+" was submitted but not approved yet.","registry");
+  else add("m","unreg",10,"UPI ID not in registry",upi+" is not a registered payee. Unverified, not proof of a scam.","registry")}
+ const ph=(text.match(/(?:\+91[- ]?)?[6-9]\d{9}/)||[])[0],ids=[upi&&"upi:"+upi.toLowerCase(),ph&&"ph:"+ph,...hosts.filter(h=>!regDom(h)).map(h=>"d:"+h)].filter(Boolean);
+ if(keep)ids.forEach(id=>{const c=S.cases.filter(x=>x.ids.includes(id)).length;if(c)add("m","linked",0,"Seen before","“"+id.split(":")[1]+"” appeared in "+c+" earlier check(s) on this device.","case history")});
+ const pf=i.handle||i.name||i.website;
+ if(i.handle){const b=Math.max(0,...S.org.handles.map(h=>n(h)===n(i.handle)&&h.toLowerCase()!==i.handle.toLowerCase().replace(/^@/,"")?.9:sim(h,i.handle))),ex=S.org.handles.some(h=>h.toLowerCase()===i.handle.toLowerCase().replace(/^@/,""));
+  if(ex)add("f","hx",0,"Handle matches registry","Same as a registered handle.","registry");
+  else if(b>=.8)add("f","hn",20,"Handle resembles an official one","“"+i.handle+"” is close to a registered handle but not the same.","registry comparison");
+  else add("f","hu",0,"Handle: no close match","Unknown relationship to registered handles.","registry comparison")}
+ if(i.name&&sim(i.name,S.org.name.replace(/ \(.*/,""))>=.75&&!i.handle?.length||i.name&&sim(i.name,S.org.name.replace(/ \(.*/,""))>=.75&&!S.org.handles.some(h=>h.toLowerCase()===(i.handle||"").toLowerCase().replace(/^@/,"")))add("f","dn",15,"Display name resembles the college","“"+i.name+"” looks like the registered name.","registry comparison");
+ if(i.website){const h=host(i.website);if(regDom(h))add("f","wk",0,"Website matches registry","“"+h+"” is registered.","registry");else add("f","wd",30,"Website differs from registry","“"+h+"” is not a registered domain.","registry comparison")}
+ const gr={};["m","f"].forEach(g=>{const it=ev.filter(e=>e.g===g);if(!it.length)return;const sc=Math.max(0,Math.min(100,it.reduce((a,e)=>a+e.p,0))),cats=new Set(it.filter(e=>e.p>0).map(e=>e.c));let b=band(sc);if(b==="High"&&cats.size<2)b="Medium";gr[g]={sc,b,it}});
+ const insuf=text.trim().length<15&&!upi&&!pf&&!hosts.length;
+ const cf=[text.trim().length>=20,upi||hosts.length,S.org.domains.length&&S.org.handles.length].filter(Boolean).length,conf=cf>=3?"High":cf==2?"Medium":"Low";
+ const any=Object.values(gr),hi=any.some(x=>x.b==="High"),ver=ev.some(e=>e.c==="verified");
+ const out=insuf?"Insufficient information":hi?"Risk indicators found":ver?"Matches registered payee":"Unverified";
+ if(keep&&!insuf){S.cases.push({ids});S.cases=S.cases.slice(-50);save()}
+ return{gr,out,conf,insuf,cats:new Set(ev.map(e=>e.c))};
+}
+const MSG={Low:"Few warning indicators were found in the information provided. This does not prove the account is safe.",Medium:"Some inconsistencies were found. Verify through an independently confirmed channel.",High:"Multiple warning indicators were found. Do not pay or share credentials until independently verified."};
+function show(r){
+ const el=$("#res");if(r.insuf){el.innerHTML='<div class="card"><h2>Insufficient information</h2><p>Add message text, a link, a UPI ID or profile details so there is something to check.</p></div>';return}
+ let h='<div class="card"><h2>'+esc(r.out)+'</h2><p class="mu">Confidence: <b>'+r.conf+'</b>. This reflects how complete your input was, not how likely a scam is.</p>';
+ const nm={m:"Message and payment",f:"Profile"};
+ for(const g of["m","f"])if(r.gr[g]){const x=r.gr[g];h+='<h3>'+nm[g]+' <span class="chip '+x.b+'">'+ICON[x.b]+x.b+' ('+x.sc+')</span></h3><p>'+MSG[x.b]+'</p>'+x.it.map(e=>'<div class="ev '+(e.p>0?"pos":e.p<0?"neg":"")+'"><b>'+esc(e.t)+'</b> '+(e.p?'<span class="src">('+(e.p>0?"+":"")+e.p+')</span>':"")+'<br>'+esc(e.d)+'<br><span class="src">Source: '+e.s+'</span></div>').join("")}
+ const st=["Ask your faculty or placement cell through a channel you found yourself, such as the college website."];
+ if(r.cats.has("payment")||r.cats.has("unreg")||r.cats.has("pending"))st.push("Before paying, check that the receiver name in your UPI app matches the person you expect.");
+ if(r.cats.has("otp"))st.push("Never share an OTP, PIN or password. A genuine registration does not need one.");
+ if(["short","link","lookalike"].some(c=>r.cats.has(c)))st.push("Do not enter personal details on the link. Type the official website address yourself.");
+ h+='<h3>What to do now</h3><ul>'+st.map(s=>"<li>"+s+"</li>").join("")+'</ul><p class="mu">Assessment is based on user-submitted information and the registered reference; it is not official platform verification.</p><button class="alt noprint" onclick="print()">Print report</button></div>';
+ el.innerHTML=h;el.scrollIntoView({behavior:"smooth"});
+}
+const SAMPLES=[{text:"Python workshop on 15 Nov. Fee Rs 500 payable to rao.sunrise@upi. Details: sunrise.edu.in/workshop"},
+{text:"FREE Technical Skills Development Program! Internship guaranteed. Only 50 seats left, register TODAY: bit.ly/xyz123. Pay Rs 199 deposit to confirm. Forward to all groups!"},
+{text:"Official placement cell update. Pay Rs 999 processing fee at sunrise-edu.in/pay, send to hr.jobs@upi",handle:"sunrise_placements_",name:"Sunrise Institute of Technology",website:"sunrise-edu.in"}];
+const val=()=>({text:$("#msg").value,link:$("#lnk").value,upi:$("#upi").value,handle:$("#hnd").value,name:$("#dn").value,website:$("#web").value});
+$("#go").onclick=async()=>{let r;try{r=SRV?adapt(await api("POST","analyze",val())):run(val(),true)}catch(e){r=run(val(),true)}show(r);if(!r.insuf){const w=["Low","Medium","High"][Math.max(0,...Object.values(r.gr).map(g=>["Low","Medium","High"].indexOf(g.b)))];(S.log=S.log||[]).unshift({t:Date.now(),o:r.out,b:w,x:val().text.slice(0,60)});S.log=S.log.slice(0,8);save()}};
+$("#clr").onclick=()=>{$("#f").reset();$("#res").innerHTML=""};
+document.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{const s=SAMPLES[b.dataset.s];$("#msg").value=s.text||"";$("#lnk").value="";$("#upi").value="";$("#hnd").value=s.handle||"";$("#dn").value=s.name||"";$("#web").value=s.website||"";show(run(s,false))});
+function reg(){const o=S.org;$("#on").value=o.name;$("#od").value=o.domains.join(", ");$("#oh").value=o.handles.join(", ");$("#oc").value=o.contacts.join(", ");
+ const f=[o.name,o.domains.length,o.handles.length,o.contacts.length,S.payees.some(p=>p.st==="approved")].filter(Boolean).length;$("#cm").textContent="Registry completeness: "+f+" of 5 items filled.";$("#cb").style.width=f*20+"%";
+ $("#pl").innerHTML=S.payees.map((p,i)=>'<div class="ev"><b>'+esc(p.name)+'</b> '+esc(p.upi)+' <span class="pill">'+p.st+'</span><br><span class="src">'+esc(p.purpose)+'</span><div class="row"><button class="alt sm" data-a="'+i+'">'+(p.st==="approved"?"Revoke":"Approve")+'</button><button class="alt sm" data-d="'+i+'">Remove</button></div></div>').join("")||'<p class="mu">No payees yet. Submit one below.</p>';
+ document.querySelectorAll("[data-a]").forEach(b=>b.onclick=async()=>{const p=S.payees[b.dataset.a];if(SRV){try{await api("PATCH","payees/"+p.id+"/approve");await load()}catch(e){alert(e.message)}}else{p.st=p.st==="approved"?"pending":"approved";save()}reg()});
+ document.querySelectorAll("[data-d]").forEach(b=>b.onclick=async()=>{const p=S.payees[b.dataset.d];if(SRV){try{await api("DELETE","payees/"+p.id);await load()}catch(e){alert(e.message)}}else{S.payees.splice(b.dataset.d,1);save()}reg()})}
+const csv=v=>v.split(",").map(x=>x.trim()).filter(Boolean);
+$("#sv").onclick=async()=>{S.org={name:$("#on").value.trim(),domains:csv($("#od").value.toLowerCase()),handles:csv($("#oh").value),contacts:csv($("#oc").value)};save();if(SRV){try{await api("PUT","org",S.org)}catch(e){alert(e.message);await load()}}reg()};
+$("#pa").onclick=async()=>{const u=$("#pu").value.trim(),nm=$("#pn").value.trim(),pr=$("#pp").value.trim()||"Not stated";if(!nm||!/^[\w.-]{2,}@[a-z]{2,}$/i.test(u)){alert("Enter a faculty name and a valid UPI ID such as name@bank.");return}
+ if(SRV){if(!FTOK){alert("Verify your college email first, using the steps above.");return}try{await api("POST","payees",{name:nm,upi:u,purpose:pr},null,FTOK);await load()}catch(e){alert(e.message);return}}else S.payees.push({name:nm,upi:u,purpose:pr,st:"pending"});
+ ["#pn","#pu","#pp"].forEach(x=>$(x).value="");save();reg()};
+$("#al").onclick=async()=>{try{TOK=(await api("POST","auth/admin",{password:$("#ap").value})).token;$("#sm").textContent="Signed in as admin. You can edit the registry and approve payees."}catch(e){$("#sm").textContent=e.message}};
+$("#so").onclick=async()=>{try{const j=await api("POST","otp/request",{email:$("#fe").value.trim()});$("#om").textContent=j.message+(j.dev_code?" Demo code: "+j.dev_code:"")}catch(e){$("#om").textContent=e.message}};
+$("#vo").onclick=async()=>{try{FTOK=(await api("POST","otp/verify",{email:$("#fe").value.trim(),code:$("#fc").value.trim()})).token;$("#om").textContent="Email verified. You can submit a payee now."}catch(e){$("#om").textContent=e.message}};
+$("#shot").onchange=async e=>{const f=e.target.files[0];if(!f)return;if(!SRV){$("#ocrn").textContent="Reading screenshots needs the Jaanch server. Run the backend to turn this on.";return}$("#ocrn").textContent="Reading text…";const fd=new FormData();fd.append("file",f);try{$("#msg").value=(await api("POST","ocr",null,fd)).text;$("#ocrn").textContent="Text extracted. Check it and fix any mistakes, then press Check."}catch(x){$("#ocrn").textContent=x.message}};
+const EVAL=[["genuine",SAMPLES[0].text],["genuine","Placement drive: a company visits next week. Register at sunrise.edu.in/placements."],["genuine","Reminder: submit your internship report by Friday. Contact the placement cell."],
+["ambiguous","Last date today to register for the workshop: bit.ly/sunrise-ws"],["ambiguous","Hurry, fee for the seminar is due. Pay at the college accounts office."],
+["scam",SAMPLES[1].text],["scam","Congratulations, you are selected for placement. Pay registration fee Rs 2000 to hr.jobs@upi now"],["scam","Share the OTP sent to you to confirm your seat immediately"],
+["scam",SAMPLES[2].text],["scam","Hello! Great opportunity from our team. Please send details of your account for onboarding."]];
+$("#ev").onclick=()=>{const rows=EVAL.map(([l,t])=>{const r=run({text:t,handle:l==="scam"&&t===SAMPLES[2].text?SAMPLES[2].handle:"",name:l==="scam"&&t===SAMPLES[2].text?SAMPLES[2].name:"",website:l==="scam"&&t===SAMPLES[2].text?SAMPLES[2].website:""},false),b=Math.max(...Object.values(r.gr).map(g=>["Low","Medium","High"].indexOf(g.b)),0),B=["Low","Medium","High"][b];return{l,t,B}});
+ const g=rows.filter(x=>x.l==="genuine"),s=rows.filter(x=>x.l==="scam"),fa=g.filter(x=>x.B!=="Low").length,ms=s.filter(x=>x.B==="Low").length;
+ $("#evr").innerHTML='<p><b>False alarms on genuine items:</b> '+fa+' of '+g.length+'<br><b>Scams rated Low (missed):</b> '+ms+' of '+s.length+'</p><table><tr><th>Label</th><th>Result</th><th>Item</th></tr>'+rows.map(x=>'<tr><td>'+x.l+'</td><td><span class="chip '+x.B+'">'+ICON[x.B]+x.B+'</span></td><td>'+esc(x.t.slice(0,70))+'…</td></tr>').join("")+'</table><p class="mu">The last scam item is calm and has no red flags, so a rules-only tool misses it. That is a known limit.</p>'};
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{["home","check","reg","ev","ab"].forEach(t=>$("#t-"+t).classList.toggle("hide",t!==b.dataset.t));document.querySelectorAll("nav button").forEach(x=>x.removeAttribute("aria-current"));b.setAttribute("aria-current","true");if(b.dataset.t==="reg")reg();if(b.dataset.t==="home")home();scrollTo(0,0)});
+function home(){const L=S.log||[],c={Low:0,Medium:0,High:0};L.forEach(x=>c[x.b]++);
+$("#st").innerHTML=[["Checks run",L.length],["Rated High",c.High],["Verified payees",S.payees.filter(p=>p.st==="approved").length]].map(([k,v])=>'<div class="stat"><b>'+v+'</b><span>'+k+'</span></div>').join("");
+$("#rc").innerHTML=L.length?L.map(x=>'<div class="rec"><span class="chip '+x.b+'">'+ICON[x.b]+x.b+'</span><div><b>'+esc(x.o)+'</b><br><span class="src">'+esc(x.x)+'… · '+new Date(x.t).toLocaleString()+'</span></div></div>').join(""):'<p class="mu">No checks yet. Run your first check and it will appear here.</p>'}
+document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>document.querySelector('nav [data-t="'+b.dataset.go+'"]').click());
+$("#th").onclick=()=>{const d=document.documentElement;d.dataset.theme=getComputedStyle(d).colorScheme==="dark"?"light":"dark"};
+reg();home();
+(async()=>{try{const r=await fetch("/api/v1/health");if(r.ok&&(await r.json()).status==="ok"){SRV=true;await load();$("#sec").classList.remove("hide");$("#ot").classList.remove("hide");reg();home()}}catch(e){}})();
+</script></body></html>

@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+rapidfuzz
+python-multipart
+python-dotenv
+pytesseract
+pillow
+pytest
+httpx

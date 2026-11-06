@@ -1,0 +1,7 @@
+[
+ {"cat":"otp","pts":40,"title":"OTP or password request","why":"Asks for a secret code. Never share these.","pattern":"\\b(otp|pin|password|login code|cvv)\\b"},
+ {"cat":"payment","pts":25,"title":"Payment request","why":"Colleges do charge fees, so verify the payee independently.","pattern":"(registration fee|processing fee|refundable deposit|deposit|pay now|pay (?:rs\\.?|₹)\\s?\\d+|\\bfees?\\b|send money|paisa bhejo|paise bhejo)"},
+ {"cat":"urgency","pts":10,"title":"Urgency","why":"Pressure to act fast. Urgency alone is not proof.","pattern":"(only \\d+ seats|seats left|today only|register today|last chance|hurry|immediately|urgent|jaldi)"},
+ {"cat":"jobclaim","pts":10,"title":"Guaranteed or surprise selection","why":"Verify with the placement office.","pattern":"(internship guaranteed|guaranteed (?:job|placement|internship)|100% placement|you are selected|selected for)"},
+ {"cat":"chain","pts":10,"title":"Chain-forward request","why":"Common in scam forwards, not proof.","pattern":"(forward to all|share (?:with|to) (?:everyone|all)|forward this)"}
+]
